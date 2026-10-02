@@ -376,7 +376,7 @@ Widget _buildpicsview(){
                                       child: Row(
                                         children: [
                                           IconButton(onPressed: () async {
-                                            String? imagepath = box.getAt(index);
+                                            String? imagepath = box.getAt(reverseindex);
 
                                             if (imagepath != null){
                                               try{
@@ -402,13 +402,13 @@ Widget _buildpicsview(){
                                           icon: Icon(Icons.restore,color: Colors.purple,)),
                                           IconButton(
                                             onPressed: () async {
-                                              String? imagepath = box.getAt(index);
+                                              String? imagepath = box.getAt(reverseindex);
                                               if (imagepath != null){
                                                 try{
                                                   File image = File(imagepath);
                                                   if (await image.exists()){
                                                     await image.delete();
-                                                    await box.deleteAt(index);
+                                                    await box.deleteAt(reverseindex);
                                                   }
                                                 } catch (e){
                                                   ScaffoldMessenger.of(context).showSnackBar(
